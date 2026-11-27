@@ -4,8 +4,20 @@ import "./credits.css";
 
 export const metadata: Metadata = { title: "만든 사람들 | 고리" };
 
-const members = [
-  { name: "권혁원", nickname: "gb", role: "PM" },
+type Member = {
+  name: string;
+  nickname: string;
+  role: string;
+  message?: string;
+};
+
+const members: readonly Member[] = [
+  {
+    name: "권혁원",
+    nickname: "gb",
+    role: "PM",
+    message: "너와 나의 연결 Gori",
+  },
   { name: "한지민", nickname: "minivet", role: "Designer" },
   { name: "서인성", nickname: "cheese", role: "Designer" },
   { name: "박정원", nickname: "siwon", role: "Developer" },
@@ -16,8 +28,15 @@ export default function CreditsPage() {
     <main className="page-shell credits-page">
       <h1>만든 사람들</h1>
       <ul className="credits-grid">
-        {members.map(({ name, nickname, role }) => (
-          <li key={nickname} className="card credits-card">
+        {members.map(({ name, nickname, role, message }) => (
+          <li
+            key={nickname}
+            className="card credits-card"
+            tabIndex={message ? 0 : undefined}
+            aria-describedby={
+              message ? `credits-message-${nickname}` : undefined
+            }
+          >
             <div className="credits-member">
               <h2>{name}</h2>
               <p className="credits-nickname">
@@ -34,6 +53,15 @@ export default function CreditsPage() {
             <span className="credits-role" data-role={role} lang="en">
               {role}
             </span>
+            {message && (
+              <p
+                id={`credits-message-${nickname}`}
+                className="credits-message"
+                role="tooltip"
+              >
+                {message}
+              </p>
+            )}
           </li>
         ))}
       </ul>
