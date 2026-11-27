@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "Gori Credits";
+  src: url("/fonts/PretendardVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+body:has(.credits-page) {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #e3eeff 0%, #f1f6ff 50%, #fff 100%);
+  background-attachment: fixed;
+}
+
+.page-shell.credits-page {
+  flex: 1;
+  width: min(1280px, calc(100% - 64px));
+  min-height: 0;
+  margin: 0 auto;
+  padding: 80px 0 64px;
+  color: #212121;
+  font:
+    400 14px/20px "Gori Credits",
+    "Apple SD Gothic Neo",
+    sans-serif;
+}
+
+.credits-page h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: normal;
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 24px;
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+}
+
+.credits-grid .credits-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  background: #fff;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.credits-member {
+  display: grid;
+  gap: 4px;
+}
+
+.credits-member h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.credits-nickname {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  color: #5465ff;
+  font-weight: 600;
+}
+
+.credits-nickname img {
+  width: auto;
+}
+
+.credits-role {
+  color: #9d9c9e;
+}
+
+.credits-role[data-role="Designer"] {
+  width: 65px;
+}
+
+.credits-role[data-role="Developer"] {
+  width: 72px;
+}
+
+@media (max-width: 720px) {
+  .page-shell.credits-page {
+    width: calc(100% - 40px);
+    padding: 36px 0;
+  }
+}

@@ -46,6 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <span>
             {publicOrigins.map((origin) => new URL(origin).host).join(" · ")}
           </span>
+          <Link href="/manage/credits">만든 사람들</Link>
           <span>made by SPARCS</span>
         </footer>
       </body>
