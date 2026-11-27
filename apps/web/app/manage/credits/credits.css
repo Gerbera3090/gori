@@ -43,6 +43,7 @@ body:has(.credits-page) {
 }
 
 .credits-grid .credits-card {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,6 +53,46 @@ body:has(.credits-page) {
   border: 0;
   border-radius: 12px;
   box-shadow: none;
+}
+
+.credits-card[tabindex]:focus-visible {
+  outline: 3px solid #5465ff;
+  outline-offset: 3px;
+}
+
+.credits-message {
+  position: absolute;
+  z-index: 1;
+  inset: auto 12px 100%;
+  width: fit-content;
+  max-width: calc(100% - 24px);
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #fff;
+  background: #212121;
+  visibility: hidden;
+}
+
+.credits-card:hover .credits-message,
+.credits-card:focus-visible .credits-message {
+  visibility: visible;
+}
+
+@media (hover: none) {
+  .credits-card:has(.credits-message) {
+    flex-wrap: wrap;
+  }
+
+  .credits-message {
+    position: static;
+    flex-basis: 100%;
+    max-width: none;
+    padding: 0;
+    color: #454545;
+    background: transparent;
+    visibility: visible;
+  }
 }
 
 .credits-member {
